@@ -1,0 +1,12 @@
+{
+    "name": "node-vite-heroku-app",
+    "version": "1.0.0",
+    "main": "index.js",
+    "engines": {
+    "node": "v22.20.0",
+    "npm": "10.9.3"
+  },
+    "scripts": {
+        "start": "cd server && npm install && node index.js"
+    } 
+}
