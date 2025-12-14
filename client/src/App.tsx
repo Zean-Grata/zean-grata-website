@@ -1,36 +1,16 @@
-import { useState } from 'react'
 import './App.css'
-import { Button } from 'react-bootstrap';
 
 function App() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('https://node-vite-app-281435d45db7.herokuapp.com/data'); // Replace with your API endpoint
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      setData(result);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div>
-      <Button variant="primary" onClick={fetchData} disabled={loading}> {loading ? 'Loading...' : 'Fetch Data'}</Button>
-
-      {data && (
-        <div>
-          <h2>Fetched Data:</h2>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
+    <div className="bg-[url('background.jpg')] flex flex-col h-screen w-full bg-cover bg-center px-10 py-5 space-y-30">
+        <div className='flex'>
+            <img src="logo.svg" className='h-40 w-40'></img>
         </div>
-      )}
-    </div>
+        <div className='flex justify-center items-center'>
+            <h1 className='text-2xl text-white'>Website Under Construction</h1>
+        </div>
+        
+       </div>
   );
 }
 
