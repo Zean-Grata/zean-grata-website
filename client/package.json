@@ -8,12 +8,10 @@
     "npm": "10.9.3"
   },
   "scripts": {
-    "start-client": "vite",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "start": "serve -s dist",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "heroku-postbuild": "npm run build"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@eslint/js": "^9.36.0",

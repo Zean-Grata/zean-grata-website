@@ -1,14 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const fileURLToPath = require("url");
 
 const path = require('path');
 
 app.use(cors());
 app.use(express.static(path.join(__dirname,'../client/dist')));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname,"../client/dist/index.html"));
+app.get("*filepath", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "../client/dist/index.html")
+  );
 });
 
 app.get('/data', (req, res) => {

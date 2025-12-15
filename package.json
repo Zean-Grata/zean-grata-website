@@ -7,6 +7,8 @@
     "npm": "10.9.3"
   },
     "scripts": {
-        "start": "cd server && npm install && node index.js"
+        "build": "cd client && npm install && npm run build",
+        "start": "node server/index.js",
+        "heroku-postbuild": "npm run build"
     } 
 }
