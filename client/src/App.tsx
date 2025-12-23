@@ -68,7 +68,7 @@ function App() {
                         <img src="/zean_grata_icon.svg" alt="Zean Grata Logo" className='w-[50px] h-[50px]'/>
                     </div>
                     <div className='flex flex-1 items-end'>
-                      <p>EmannuelBelete<br/>
+                      <p>Emannuel Belete<br/>
                          IT Consultant<br/>
                          +27 79 455 8925<br/> 
                          emannuelbelete@zeangrata.co.za
