@@ -18,6 +18,12 @@ jobs:
           echo "Deployment not confirmed. Type DEPLOY to proceed."
           exit 1
           
+      - name: Deployment confirmed
+        if: ${{ github.event.inputs.confirm == 'DEPLOY' }}
+        run: |
+            echo "Deployment confirmed"
+            exit 1
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
