@@ -8,9 +8,8 @@
     "npm": "10.9.3"
   },
   "scripts": {
-    "dev": "vite",
+    "client": "vite",
     "build": "tsc -b && vite build",
-    "start": "serve -s dist",
     "lint": "eslint ."
   },
   "dependencies": {
