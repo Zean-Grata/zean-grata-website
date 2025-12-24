@@ -1,15 +1,23 @@
 name: Deploy Zean Grata Website
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type DEPLOY to confirm"
+        required: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Confirm deployment
+        if: ${{ github.event.inputs.confirm != 'DEPLOY' }}
+        run: |
+          echo "Deployment not confirmed. Type DEPLOY to proceed."
+          exit 1
+          
       - name: Checkout repository
         uses: actions/checkout@v4
 
