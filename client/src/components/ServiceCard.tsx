@@ -29,12 +29,12 @@ function getIcon(type: string) {
 
 const ServiceCard = ({icon, title, content}: ServiceCardProps) => {
     return(
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 w-fit">
             <div className="flex items-center space-x-2">
                 <img src={getIcon(icon)} className="w-[30px] h-[30px]"/>
-                <h2 className="text-white text-sm lg:text-lg">{title}</h2>
+                <h2 className="text-[#2E2E2E] font-medium text-sm lg:text-lg">{title}</h2>
             </div>
-            <p className='text-gray-700'>{content}</p>
+            <p className='text-[#5E5E5E] max-w-[30ch]'>{content}</p>
         </div>
     )
 }
