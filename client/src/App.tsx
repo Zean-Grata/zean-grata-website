@@ -1,14 +1,11 @@
 import './App.css';
 import logo from '/src/assets/logo.svg';
-import troubleshoot from '/src/assets/troubleshoot.svg';import work from '/src/assets/work.svg'; 
-import web from '/src/assets/web.svg';import email from '/src/assets/email.svg';
-import backup from '/src/assets/backup.svg';import advice from '/src/assets/advice.svg'
 import ServiceCard from './components/ServiceCard';
 import TeamCard from './components/TeamCard';
 
 function App() {
   return (
-    <div className='[&_*]:text-white w-auto overflow-hidden'>
+    <div className='**:text-white w-auto overflow-hidden'>
        <div id="nav" className='flex px-15 lg:px-30 py-5 h-[70px] w-auto'>
             <img src={logo} alt="Zean Grata company logo" role="img" aria-label='Zean Grata company logo' className='w-[150px] h-[20px] lg:w-[200px] lg:h-[30px]'/>
         </div>
