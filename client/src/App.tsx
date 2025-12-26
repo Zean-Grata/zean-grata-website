@@ -2,6 +2,7 @@ import './App.css';
 import logo from '/src/assets/logo.svg';
 import ServiceCard from './components/ServiceCard';
 import TeamCard from './components/TeamCard';
+import ContactForm from './components/ContactForm';
 
 function App() {
   return (
@@ -9,10 +10,10 @@ function App() {
        <div id="nav" className='flex px-17 lg:px-40 py-5 h-[70px] w-auto'>
             <img src={logo} alt="Zean Grata company logo" role="img" aria-label='Zean Grata company logo' className='w-[150px] h-[20px] lg:w-[200px] lg:h-[30px]'/>
        </div>
-        <div id="bg-container" className="bg-hero flex  h-[600px] w-auto bg-cover bg-center lg:bg-top px-15 py-30 space-y-30">
+        <div id="bg-container" className="bg-hero flex h-[600px] w-auto bg-cover bg-center lg:bg-top px-15 py-30 space-y-30">
           <div id="hero-container" className='flex flex-col items-center sm:items-start space-y-10 px-2 max-w-[120ch] lg:px-25'>
             <div className='flex flex-col space-y-5'>
-              <h1 className='text-white text-2xl max-w-[20ch] lg:text-5xl 
+              <h1 className='text-white text-4xl text-center max-w-[30ch] lg:text-start lg:max-w-[20ch] lg:text-5xl 
                lg:max-w-[19ch]'>IT Consulting & Support That Grows With Your Business</h1>
               <h2 className='text-[#F3F3F3] text-sm font-semibold lg:text-lg max-w-[41ch]'>
                 We keep your systems running smoothly so you can focus on your work, providing dependable
@@ -85,6 +86,14 @@ function App() {
               />
             </div>
           </div>  
+        </div>
+        <div className='flex justify-center py-10'>
+            <div className='flex flex-col w-[800px] space-y-10'>
+              <h1 className='text-md text-[#216F66]'>CONTACT US</h1>
+              <ContactForm
+
+              />  
+          </div>
         </div>
         <footer id="footer" className='flex justify-center items-center w-auto h-[100px] bg-[#2E2E2E] text-white'>
           <small>
