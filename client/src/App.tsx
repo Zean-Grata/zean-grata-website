@@ -7,15 +7,15 @@ import ContactForm from './components/ContactForm';
 function App() {
   return (
     <div className='w-auto overflow-hidden'>
-       <div id="nav" className='flex px-17 lg:px-40 py-5 h-[70px] w-auto'>
+       <div id="nav" className='flex px-17 lg:px-40 py-5 h-[60px] lg:h-[70px] w-auto bg-white'>
             <img src={logo} alt="Zean Grata company logo" role="img" aria-label='Zean Grata company logo' className='w-[150px] h-[20px] lg:w-[200px] lg:h-[30px]'/>
        </div>
-        <div id="bg-container" className="bg-hero flex h-[600px] w-auto bg-cover bg-center lg:bg-top px-15 py-30 space-y-30">
+        <div id="bg-container" className="bg-hero flex h-[700px] lg:h-[600px] w-auto bg-cover bg-center lg:bg-top px-15 py-15 lg:py-30 space-y-30">
           <div id="hero-container" className='flex flex-col items-center sm:items-start space-y-10 px-2 max-w-[120ch] lg:px-25'>
             <div className='flex flex-col space-y-5'>
-              <h1 className='text-white text-4xl text-center max-w-[30ch] lg:text-start lg:max-w-[20ch] lg:text-5xl 
+              <h1 className='text-white text-5xl lg:text-7xl max-w-[30ch] lg:text-start lg:max-w-[15ch] lg:text-5xl 
                lg:max-w-[19ch]'>IT Consulting & Support That Grows With Your Business</h1>
-              <h2 className='text-[#F3F3F3] text-sm font-semibold lg:text-lg max-w-[41ch]'>
+              <h2 className='text-[#F3F3F3] text-md font-semibold lg:text-2xl max-w-[41ch]'>
                 We keep your systems running smoothly so you can focus on your work, providing dependable
                  IT support and practical solutions that keep your technology working for you.
               </h2>
@@ -68,7 +68,7 @@ function App() {
             </div>
           </div>    
        </div>
-       <div id="team-container" className='flex lg:justify-center px-10 py-10 bg-[#F5F5F5]'>
+       <div id="team-container" className='flex px-10 lg:justify-center lg:px-10 py-10 bg-[#F5F5F5]'>
           <div className='flex flex-col space-y-10'>
             <h1 className='text-md text-[#216F66]'>THE TEAM</h1>
             <div className='flex flex-col space-y-10 sm:flex-row lg:space-x-10'>
@@ -88,8 +88,8 @@ function App() {
           </div>  
         </div>
         <div className='flex justify-center py-10'>
-            <div className='flex flex-col w-[800px] space-y-10'>
-              <h1 className='text-md text-[#216F66]'>CONTACT US</h1>
+            <div className='flex flex-col w-[800px] space-y-10 '>
+              <h1 className='text-md text-[#216F66] px-10 lg:px-0'>CONTACT US</h1>
               <ContactForm
 
               />  
