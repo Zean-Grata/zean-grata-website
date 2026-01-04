@@ -10,7 +10,9 @@ interface TeamCardProps {
 
 const TeamCard = ({name, position, phone, email}: TeamCardProps) => {
     return(
-        <div className='flex flex-col justify-around w-[250px] h-[200px] lg:w-[300px] lg:h-[250px] bg-[#083833DD] p-5 space-y-5'>
+        <div className='flex flex-col justify-around w-[250px] h-[200px] lg:w-[300px] lg:h-[250px] 
+        bg-[#083833DD] p-5 space-y-5 transition duration-200 ease-in-out hover:bg-[#0e564ecc] 
+        hover:scale-105'>
             <div className='flex flex-1 justify-center'>
                 <img src={avatar} alt="Zean Grata Logo" className='w-[50px] h-[50px]'/>
             </div>
