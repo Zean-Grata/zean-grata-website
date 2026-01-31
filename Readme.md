@@ -1,1 +1,1 @@
-For errors with deploying vite app to heroku follow this video: https://www.youtube.com/watch?v=_O6KS2raY8I and https://www.youtube.com/watch?v=5_7uz6bErpY
+
