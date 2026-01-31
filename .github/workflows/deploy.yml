@@ -1,58 +1,109 @@
 name: Deploy Zean Grata Website
 
 on:
-  workflow_dispatch:
-    inputs:
-      confirm:
-        description: "Type DEPLOY to confirm"
-        required: true
+  push:
+    branches:
+      - develop
+      - main
 
 jobs:
-  deploy:
+
+  # =========================================
+  # 1) AUTO STAGING FOR DEVELOP
+  # =========================================
+  staging-dev:
+    if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
+    environment: staging
 
     steps:
-      - name: Confirm deployment
-        if: ${{ github.event.inputs.confirm != 'DEPLOY' }}
-        run: |
-          echo "Deployment not confirmed. Type DEPLOY to proceed."
-          exit 1
-
-      - name: Deployment confirmed
-        if: ${{ github.event.inputs.confirm == 'DEPLOY' }}
-        run: |
-            echo "Deployment confirmed"
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
-      - name: Install dependencies
+      - run: npm ci
         working-directory: client
-        run: npm install
-      
-      - name: Build site
-        working-directory: client
-        run: npm run build
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+      - run: npm run build
+        working-directory: client
+
+      - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Deploy to S3
-        run: |
-          aws s3 sync client/dist/ s3://${{ secrets.S3_BUCKET }} \
-            --delete
+      - run: aws s3 sync client/dist/ s3://${{ secrets.S3_BUCKET }} --delete
 
-      - name: Invalidate CloudFront cache
-        run: |
+
+  # =========================================
+  # 2) STAGING CHECK FOR MAIN (gatekeeper)
+  # =========================================
+  staging-release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+        working-directory: client
+
+      - run: npm run build
+        working-directory: client
+
+      # optional but recommended
+      - name: Run tests
+        run: npm test
+        working-directory: client
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - run: aws s3 sync client/dist/ s3://${{ secrets.S3_BUCKET }} --delete
+
+
+  # =========================================
+  # 3) PRODUCTION (only after staging-release)
+  # =========================================
+  production:
+    if: github.ref == 'refs/heads/main'
+    needs: staging-release
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+        working-directory: client
+
+      - run: npm run build
+        working-directory: client
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - run: aws s3 sync client/dist/ s3://${{ secrets.S3_BUCKET }} --delete
+
+      - run: |
           aws cloudfront create-invalidation \
             --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"

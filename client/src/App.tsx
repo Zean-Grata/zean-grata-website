@@ -35,7 +35,7 @@ function App() {
           <div id="hero-container" className='flex flex-col items-center sm:items-start space-y-10 px-2 max-w-[120ch] lg:px-25'>
             <div ref={view4.ref} className={`flex flex-col space-y-5 ${view4.inView ? 'transition duration-1500 ease-in-out opacity-100 translate-x-0' : 'transition duration-1500 ease-in-out opacity-0 translate-x-10'}`}>
               <h1 className='text-white text-5xl lg:text-7xl max-w-[30ch] lg:text-start lg:max-w-[15ch] lg:text-5xl 
-               lg:max-w-[19ch]'>IT Consulting & Support That Grows With Your Business</h1>
+               lg:max-w-[19ch]'>IT Consulting that Grows With Your Business</h1>
               <h2 className='text-[#F3F3F3] text-md font-semibold lg:text-2xl max-w-[41ch]'>
                 We keep your systems running smoothly so you can focus on your work, providing dependable
                  IT support and practical solutions that keep your technology working for you.
