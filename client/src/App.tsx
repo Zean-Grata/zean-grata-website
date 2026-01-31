@@ -27,7 +27,7 @@ function App() {
   });
 
   return (
-    <div className='w-auto overflow-hidden'>
+    <div className='w-auto overflow-hidden '>
        <div id="nav" className='flex px-17 lg:px-40 py-5 h-[60px] lg:h-[70px] w-auto bg-white'>
             <img src={logo} alt="Zean Grata company logo" role="img" aria-label='Zean Grata company logo' className='w-[150px] h-[20px] lg:w-[200px] lg:h-[30px]'/>
        </div>
