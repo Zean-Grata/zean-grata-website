@@ -37,6 +37,12 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - run: aws s3 sync client/dist/ s3://${{ secrets.S3_BUCKET }} --delete
+      
+      - name: Show staging URL
+        run: |
+          echo "Staging deployed successfully!"
+          echo "http://${{ secrets.S3_BUCKET }}.s3-website-${{ secrets.AWS_REGION }}.amazonaws.com"
+
 
 
   # =========================================
