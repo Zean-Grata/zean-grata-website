@@ -1,10 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
 @layer utilities {
   .bg-hero {
     background-image: url("/hero.png");
   }
+  .font-heading {
+    font-family: "Playfair Display", serif;
+  }
+  .font-body {
+    font-family: "Inter", serif;
+  }
+  .full-page-container {
+    height: 100vh; /* Ensure container takes full viewport height */
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+  }
+
+  .page {
+      height: 100vh; /* Each page takes full viewport height */
+      scroll-snap-align: start; /* Snap to the start of each page */
+    }
 }
+
+
 
 :root {
   line-height: 1.5;
