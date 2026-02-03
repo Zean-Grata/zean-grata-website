@@ -7,10 +7,6 @@ import { useInView } from "react-intersection-observer";
 import Hero from './pages/Hero';
 
 function App() {
-  const view1 = useInView({
-        threshold: 0,
-        triggerOnce: true,
-  });
 
   const view2 = useInView({
         threshold: 0,
