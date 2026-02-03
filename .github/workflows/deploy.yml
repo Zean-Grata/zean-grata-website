@@ -48,7 +48,7 @@ jobs:
   # 2) AUTO DEPLOY FOR STAGING
   # =========================================
   stage:
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/stage'
     runs-on: ubuntu-latest
     environment: staging
 
