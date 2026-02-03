@@ -4,14 +4,50 @@ on:
   push:
     branches:
       - develop
+      - stage
       - main
 
 jobs:
 
   # =========================================
-  # 1) AUTO STAGING FOR DEVELOP
+  # 1) AUTO DEPLOY FOR DEVELOP
   # =========================================
-  staging-dev:
+  dev:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: 'client/package-lock.json' 
+
+      - run: npm ci
+        working-directory: client
+
+      - run: npm run build
+        working-directory: client
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - run: aws s3 sync client/dist/ s3://${{ secrets.S3_BUCKET }} --delete
+      
+      - name: Show staging URL
+        run: |
+          echo "Staging deployed successfully!"
+          echo "http://${{ secrets.S3_BUCKET }}.s3-website-${{ secrets.AWS_REGION }}.amazonaws.com"
+
+# =========================================
+  # 2) AUTO DEPLOY FOR STAGING
+  # =========================================
+  stage:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     environment: staging
@@ -43,10 +79,8 @@ jobs:
           echo "Staging deployed successfully!"
           echo "http://${{ secrets.S3_BUCKET }}.s3-website-${{ secrets.AWS_REGION }}.amazonaws.com"
 
-
-
   # =========================================
-  # 2) STAGING CHECK FOR MAIN (gatekeeper)
+  # 3) STAGING CHECK FOR MAIN (gatekeeper)
   # =========================================
   staging-release:
     if: github.ref == 'refs/heads/main'
@@ -81,7 +115,7 @@ jobs:
 
 
   # =========================================
-  # 3) PRODUCTION (only after staging-release)
+  # 4) AUTO DEPLOY FOR PRODUCTION (only after staging-release)
   # =========================================
   production:
     if: github.ref == 'refs/heads/main'
