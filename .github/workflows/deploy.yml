@@ -6,6 +6,11 @@ on:
       - develop
       - stage
       - main
+    paths:
+      - "client/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/deploy.yml"
 
 jobs:
 

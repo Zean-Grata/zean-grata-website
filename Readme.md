@@ -1,1 +1,1 @@
-
+Website for the company Zean Grata offering Web Development and IT Consulting services to local small businesses.
