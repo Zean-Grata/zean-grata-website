@@ -10,7 +10,7 @@ return (
     <h1 className='text-[#FFFFFF] font-heading max-w-[11ch] text-8xl/27 font-bold'>
       We craft digital <span className='text-[#E8693A]'>experiences</span> that inspire.
     </h1>
-    <h2 className='text-[#B3B3B3] text-lg font-body font-medium max-w-[78ch]'>
+    <h2 className='text-[#B3B3B3] text-lg font-body font-medium max-w-[60ch]'>
       Transform your vision into stunning digital reality. We blend creativity with cutting-edge technology 
       to build websites that captivate, convert, and scale.
     </h2>
