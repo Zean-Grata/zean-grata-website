@@ -1,31 +1,34 @@
-import '../App.css';
 import Tag from '../components/Tag';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import Button from '../components/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 function Hero() {
 return (
-  <div className="bg-hero flex flex-col space-y-8 h-184 w-auto bg-cover bg-center px-32 py-12">
-    <Tag/>
-    <h1 className='text-[#FFFFFF] font-heading max-w-[11ch] text-8xl/27 font-bold'>
-      We craft digital <span className='text-[#E8693A]'>experiences</span> that inspire.
+  <div className="flex flex-col items-center space-y-8 w-full h-280 md:h-250 md:px-32 md:py-12 
+  bg-linear-to-br from-[#3939B9] via-[#3939B9] to-[#843FAC]">
+    <img src="/hero-mascot.png" alt="" className='w-full h-60 md:w-110 md:h-60'/>
+    <Tag />
+    <h1 className='max-w-[15ch] text-center text-white text-5xl/15 md:text-7xl/24 font-heading font-bold'>
+      Websites that <span className='text-[#F472B6]'>work</span> as hard as <span className='text-[#F472B6]'>you</span> do.
     </h1>
-    <h2 className='text-[#B3B3B3] text-lg font-body font-medium max-w-[60ch]'>
-      Transform your vision into stunning digital reality. We blend creativity with cutting-edge technology 
-      to build websites that captivate, convert, and scale.
+    <h2 className='max-w-[29ch] md:max-w-[60ch] text-center text-white text-md md:text-xl font-body font-regular'>
+      Stop losing customers to a clunky site. We craft digital experiences that convert.
     </h2>
-    <div className='flex space-x-10'>
-       <button className='flex items-center justify-center space-x-1 bg-[#E8693A] text-[#FFFFFF] w-60 h-15 p-6 text-md rounded-2xl font-body
-       transition delay-50 duration-300 ease-in-out hover:scale-105 hover:bg-[#E76E50]'>
-            <span>Start Your Project</span>
-            <FontAwesomeIcon icon={faArrowRight} />
-        </button>
-        <button className='flex items-center justify-center space-x-1 bg-transparent border border-[#FFFFF] text-[#FFFFFF] w-60 h-15 p-6 text-md rounded-2xl font-body
-       transition delay-50 duration-300 ease-in-out hover:scale-105 hover:bg-[#E76E50] hover:border-[#E76E50]'>
-            <span>View pricing</span>
-            <FontAwesomeIcon icon={faDollarSign}/>
-        </button>
+    <h3 className='max-w-[30ch] md:max-w-[60ch] text-center text-[#C6C5ED] text-md md:text-md font-body font-regular'>
+      Your brand deserves more than a template. We design custom websites that capture attention, 
+      build trust, and turn visitors into loyal customers.
+    </h3>
+    <div className='flex flex-col md:flex-row space-y-5 md:space-x-10'>
+       <Button title="Get a Free Consultation" />
+       <Button title="Contact Us" />
     </div> 
+    <div className='flex flex-col items-center space-y-2'>
+      <FontAwesomeIcon icon={faAngleDown} className='text-white animate-bounce'/>
+      <h4 className='max-w-[60ch] text-center text-white text-md font-body font-regular'>
+        Beautiful design meets bulletproof functionality.
+      </h4>
+    </div>
     <hr className='h-0.5 text-[#5A5A5A]'/>
   </div>
   );

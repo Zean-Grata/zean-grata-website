@@ -22,6 +22,14 @@
       height: 100vh; /* Each page takes full viewport height */
       scroll-snap-align: start; /* Snap to the start of each page */
     }
+    
+  .bg-secondary {
+    background-color: #EC4899 ;
+  }
+
+  .text-secondary {
+    color: #F472B6;
+  }
 }
 
 
