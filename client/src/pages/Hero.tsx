@@ -1,5 +1,5 @@
 import Tag from '../components/Tag';
-import Button from '../components/Button';
+import { PrimaryButton, SecondaryButton } from '../components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,9 +19,9 @@ return (
       Your brand deserves more than a template. We design custom websites that capture attention, 
       build trust, and turn visitors into loyal customers.
     </h3>
-    <div className='flex flex-col md:flex-row space-y-5 md:space-x-10'>
-       <Button title="Get a Free Consultation" />
-       <Button title="Contact Us" />
+    <div className='flex flex-col items-center space-y-5 md:items-start md:flex-row  md:space-x-10'>
+       <PrimaryButton title="Get a Free Consultation" width="w-60" height="h-15" />
+       <SecondaryButton title="Contact Us" width="w-50" height="h-15" />
     </div> 
     <div className='flex flex-col items-center space-y-2'>
       <FontAwesomeIcon icon={faAngleDown} className='text-white animate-bounce'/>
